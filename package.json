@@ -1,7 +1,7 @@
 {
-  "name": "hardhat-security-fcc",
+  "name": "hardhat-security",
   "version": "1.0.0",
-  "description": "", 
+  "description": "",
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "npm:hardhat-deploy-ethers",
     "ethers": "^5.5.4",

@@ -5,14 +5,16 @@ pragma solidity ^0.8.0;
 // https://solidity-by-example.org/hacks/re-entrancy/ for full example
 // Follow https://twitter.com/programmersmart
 
-contract EtherStore {
+import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
+
+contract EtherStore is ReentrancyGuard {
     mapping(address => uint256) public balances;
 
     function deposit() external payable {
         balances[msg.sender] += msg.value;
     }
 
-    function withdraw() external {
+    function withdraw() external nonReentrant {
         uint256 balance = balances[msg.sender];
         require(balance > 0);
         (bool success, ) = msg.sender.call{value: balance}("");
